@@ -1,0 +1,21 @@
+{% extends 'academy/base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+<div class="mx-auto">
+  <h1 class="text-center">Sign In</h1>
+</div>
+<div class="album py-5 bg-light">
+    <div class="container">
+      <form method="post" class="form-signin">
+        {% csrf_token %}
+        {{ form.username }}<br>
+        {{ form.password }}<br>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Confirm</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}
