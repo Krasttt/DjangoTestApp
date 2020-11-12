@@ -7,13 +7,16 @@ FIND_LESSON_BY_ID_QUERY = 'SELECT id,title, description, image FROM Lesson WHERE
 def find_by_id(id):
     with connection.cursor() as cursor:
         cursor.execute(FIND_LESSON_BY_ID_QUERY % id)
-        row = list(cursor.fetchone())
-
-    lesson = {'id': row[0],
-              'title': row[1],
-              'description': row[2],
-              'image': row[3]}
-    return lesson
+        row = cursor.fetchone()
+    if row:
+        row_list = list(row)
+        lesson = {'id': row_list[0],
+                  'title': row_list[1],
+                  'description': row_list[2],
+                  'image': row_list[3]}
+        return lesson
+    else:
+        return []
 
 
 def find_all():

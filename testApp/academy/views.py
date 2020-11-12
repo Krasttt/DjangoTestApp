@@ -23,6 +23,8 @@ def lesson(request, lesson_id):
     context = {
         'lesson': lesson
     }
+    if not lesson:
+        return redirect('list_of_lessons')
     return render(request, 'academy/lesson.html', context)
 
 
@@ -54,7 +56,7 @@ def sign_in(request):
     if request.method == 'POST':
         form = UserForm(request.POST)
         user = authenticate(username=form.data.get('username'), password=form.data.get('password'))
-        if user is not None:
+        if user:
             if user.is_active:
                 login(request, user)
                 return redirect('list_of_lessons')

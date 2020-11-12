@@ -10,6 +10,7 @@
 </div>
 <div class="album py-5 bg-light">
     <div class="container">
+      <span class="text-danger">{{ error }}</span>
       <form method="post" class="form-signin">
         {% csrf_token %}
         {{ form.username }}<br>
